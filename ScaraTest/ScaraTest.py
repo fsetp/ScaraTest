@@ -25,6 +25,12 @@ pyDeviceOpen.restype = ctypes.c_void_p
 pyDeviceClose =	dll.DeviceClose
 pyDeviceClose.argtypes = [ctypes.c_void_p]
 pyDeviceClose.restype = ctypes.c_bool
+
+########################################
+#
+pyScaraInitialize =	dll.ScaraInitialize
+pyScaraInitialize.argtypes = [ctypes.c_void_p]
+pyScaraInitialize.restype = ctypes.c_bool
 ########################################
 #
 pyMotorTorque = dll.MotorTorque
@@ -71,6 +77,8 @@ def main():
 	if (numDevice > 0):
 		hDevice = pyDeviceOpen(0);
 		print('device', hex(hDevice))
+
+		pyScaraInitialize(hDevice)
 
 		servoNum = 0
 
